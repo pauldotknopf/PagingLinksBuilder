@@ -6,8 +6,7 @@ using System.Web.WebPages;
 /// Builds paging links for a given pageNumber and totalPages in a fully configurable fashion.
 /// Built by Paul Knopf (pknopf.com)
 /// </summary>
-/// <typeparam name="T"></typeparam>
-public class PagingLinksBuilder<T> : IHtmlString
+public class PagingLinksBuilder : IHtmlString
 {
     #region Fields
 
@@ -95,7 +94,7 @@ public class PagingLinksBuilder<T> : IHtmlString
     /// </summary>
     /// <param name="layoutTemplate"></param>
     /// <returns></returns>
-    public PagingLinksBuilder<T> LayoutTemplate(Func<HelperResult, HelperResult> layoutTemplate)
+    public PagingLinksBuilder LayoutTemplate(Func<HelperResult, HelperResult> layoutTemplate)
     {
         _layoutTemplate = layoutTemplate;
         return this;
@@ -111,7 +110,7 @@ public class PagingLinksBuilder<T> : IHtmlString
     /// </summary>
     /// <param name="itemTempate"></param>
     /// <returns></returns>
-    public PagingLinksBuilder<T> ItemTemplate(Func<RenderItemModel, HelperResult> itemTempate)
+    public PagingLinksBuilder ItemTemplate(Func<RenderItemModel, HelperResult> itemTempate)
     {
         _itemTemplate = itemTempate;
         return this;
@@ -127,7 +126,7 @@ public class PagingLinksBuilder<T> : IHtmlString
     /// </summary>
     /// <param name="linkTemplate"></param>
     /// <returns></returns>
-    public PagingLinksBuilder<T> LinkTemplate(Func<RenderLinkModel, HelperResult> linkTemplate)
+    public PagingLinksBuilder LinkTemplate(Func<RenderLinkModel, HelperResult> linkTemplate)
     {
         _linkTemplate = linkTemplate;
         return this;
@@ -144,7 +143,7 @@ public class PagingLinksBuilder<T> : IHtmlString
     /// </summary>
     /// <param name="alwaysShowNavigation"></param>
     /// <returns></returns>
-    public PagingLinksBuilder<T> AlwaysShowNavigation(bool alwaysShowNavigation)
+    public PagingLinksBuilder AlwaysShowNavigation(bool alwaysShowNavigation)
     {
         _alwaysShowNavigation = alwaysShowNavigation;
         return this;
@@ -155,7 +154,7 @@ public class PagingLinksBuilder<T> : IHtmlString
     /// </summary>
     /// <param name="pageUrlBuilder"></param>
     /// <returns></returns>
-    public PagingLinksBuilder<T> PageUrlBuilder(Func<int, string> pageUrlBuilder)
+    public PagingLinksBuilder PageUrlBuilder(Func<int, string> pageUrlBuilder)
     {
         _pageUrlBuilder = pageUrlBuilder;
         return this;
@@ -175,7 +174,7 @@ public class PagingLinksBuilder<T> : IHtmlString
     /// </summary>
     /// <param name="maxNumberOfTrailingLeadingPages"></param>
     /// <returns></returns>
-    public PagingLinksBuilder<T> MaxNumberOfTrailingLeadingPages(int maxNumberOfTrailingLeadingPages)
+    public PagingLinksBuilder MaxNumberOfTrailingLeadingPages(int maxNumberOfTrailingLeadingPages)
     {
         _maxNumberOfTrailingLeadingPages = maxNumberOfTrailingLeadingPages;
         return this;
@@ -186,7 +185,7 @@ public class PagingLinksBuilder<T> : IHtmlString
     /// </summary>
     /// <param name="firstText"></param>
     /// <returns></returns>
-    public PagingLinksBuilder<T> FirstText(string firstText)
+    public PagingLinksBuilder FirstText(string firstText)
     {
         _firstText = firstText;
         return this;
@@ -197,7 +196,7 @@ public class PagingLinksBuilder<T> : IHtmlString
     /// </summary>
     /// <param name="previousText"></param>
     /// <returns></returns>
-    public PagingLinksBuilder<T> NextPrevious(string previousText)
+    public PagingLinksBuilder NextPrevious(string previousText)
     {
         _previousText = previousText;
         return this;
@@ -208,7 +207,7 @@ public class PagingLinksBuilder<T> : IHtmlString
     /// </summary>
     /// <param name="nextText"></param>
     /// <returns></returns>
-    public PagingLinksBuilder<T> NextText(string nextText)
+    public PagingLinksBuilder NextText(string nextText)
     {
         _nextText = nextText;
         return this;
@@ -219,7 +218,7 @@ public class PagingLinksBuilder<T> : IHtmlString
     /// </summary>
     /// <param name="lastText"></param>
     /// <returns></returns>
-    public PagingLinksBuilder<T> LastText(string lastText)
+    public PagingLinksBuilder LastText(string lastText)
     {
         _lastText = lastText;
         return this;
@@ -234,7 +233,7 @@ public class PagingLinksBuilder<T> : IHtmlString
     /// </summary>
     /// <param name="previousCssClass"></param>
     /// <returns></returns>
-    public PagingLinksBuilder<T> PreviousCssClass(string previousCssClass)
+    public PagingLinksBuilder PreviousCssClass(string previousCssClass)
     {
         _previousCssClass = previousCssClass;
         return this;
@@ -245,7 +244,7 @@ public class PagingLinksBuilder<T> : IHtmlString
     /// </summary>
     /// <param name="nextCssClass"></param>
     /// <returns></returns>
-    public PagingLinksBuilder<T> NextCssClass(string nextCssClass)
+    public PagingLinksBuilder NextCssClass(string nextCssClass)
     {
         _nextCssClass = nextCssClass;
         return this;
@@ -256,7 +255,7 @@ public class PagingLinksBuilder<T> : IHtmlString
     /// </summary>
     /// <param name="lastCssClass"></param>
     /// <returns></returns>
-    public PagingLinksBuilder<T> LastCssClass(string lastCssClass)
+    public PagingLinksBuilder LastCssClass(string lastCssClass)
     {
         _lastCssClass = lastCssClass;
         return this;
@@ -267,7 +266,7 @@ public class PagingLinksBuilder<T> : IHtmlString
     /// </summary>
     /// <param name="firstCssClass"></param>
     /// <returns></returns>
-    public PagingLinksBuilder<T> FirstCssClass(string firstCssClass)
+    public PagingLinksBuilder FirstCssClass(string firstCssClass)
     {
         _firstCssClass = firstCssClass;
         return this;
@@ -278,7 +277,7 @@ public class PagingLinksBuilder<T> : IHtmlString
     /// </summary>
     /// <param name="pageCssClass"></param>
     /// <returns></returns>
-    public PagingLinksBuilder<T> PageCssClass(string pageCssClass)
+    public PagingLinksBuilder PageCssClass(string pageCssClass)
     {
         _pageCssClass = pageCssClass;
         return this;
@@ -289,9 +288,20 @@ public class PagingLinksBuilder<T> : IHtmlString
     /// </summary>
     /// <param name="disabledCssClass"></param>
     /// <returns></returns>
-    public PagingLinksBuilder<T> DisabledCssClass(string disabledCssClass)
+    public PagingLinksBuilder DisabledCssClass(string disabledCssClass)
     {
         _disabledCssClass = disabledCssClass;
+        return this;
+    }
+
+    /// <summary>
+    /// Set the \"active\" css class
+    /// </summary>
+    /// <param name="activeCssClass"></param>
+    /// <returns></returns>
+    public PagingLinksBuilder ActiveCssClass(string activeCssClass)
+    {
+        _activeCssClass = activeCssClass;
         return this;
     }
 

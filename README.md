@@ -9,7 +9,7 @@ A single .cs file for you to add to your project. It quickly adds a very configu
 
 Add [the only file](https://raw.github.com/theonlylawislove/PagingLinksBuilder/master/PagingLinksBuilder.cs) you need to your project.
 
-Add the following to an HtmlHelper extension class somewhere.
+Add the following to an HtmlHelper extension method somewhere.
 
 ```c#
 public static PagingLinksBuilder PagingLinksBuilder
@@ -54,3 +54,5 @@ The following represents a complete configuration of the defaults.
     .DisabledCssClass("disabled")
     .ActiveCssClass("active"))  
 ```
+
+Enjoy!
