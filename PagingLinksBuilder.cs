@@ -28,6 +28,10 @@ public class PagingLinksBuilder<T> : IHtmlString
     private Func<int, HelperResult> _previousLink;
     private Func<int, HelperResult> _firstLink;
     private Func<int, HelperResult> _lastLink;
+    private string _firstText;
+    private string _previousText;
+    private string _nextText;
+    private string _lastText;
     // css classes
     private string _previousCssClass;
     private string _nextCssClass;
@@ -177,6 +181,50 @@ public class PagingLinksBuilder<T> : IHtmlString
         return this;
     }
 
+    /// <summary>
+    /// Set the 'First' link text'.
+    /// </summary>
+    /// <param name="firstText"></param>
+    /// <returns></returns>
+    public PagingLinksBuilder<T> FirstText(string firstText)
+    {
+        _firstText = firstText;
+        return this;
+    }
+
+    /// <summary>
+    /// Set the 'Previous' link text'.
+    /// </summary>
+    /// <param name="previousText"></param>
+    /// <returns></returns>
+    public PagingLinksBuilder<T> NextPrevious(string previousText)
+    {
+        _previousText = previousText;
+        return this;
+    }
+
+    /// <summary>
+    /// Set the 'Next' link text'.
+    /// </summary>
+    /// <param name="nextText"></param>
+    /// <returns></returns>
+    public PagingLinksBuilder<T> NextText(string nextText)
+    {
+        _nextText = nextText;
+        return this;
+    }
+
+    /// <summary>
+    /// Set the 'Last' link text'.
+    /// </summary>
+    /// <param name="lastText"></param>
+    /// <returns></returns>
+    public PagingLinksBuilder<T> LastText(string lastText)
+    {
+        _lastText = lastText;
+        return this;
+    }
+
     #endregion
 
     #region CssClasses
@@ -280,11 +328,15 @@ public class PagingLinksBuilder<T> : IHtmlString
         _maxNumberOfTrailingLeadingPages = 2;
         _alwaysShowNavigation = true;
 
+        _firstText = "First";
+        _previousText = "Previous";
+        _nextText = "Next";
+        _lastText = "Last";
         _pageLink = (pageNumber) => BuildItem(pageNumber.ToString(), pageNumber, LinkType.Page);
-        _nextLink = (pageNumber) => BuildItem("Next", pageNumber, LinkType.Next);
-        _previousLink = (pageNumber) => BuildItem("Previous", pageNumber, LinkType.Previous);
-        _firstLink = (pageNumber) => BuildItem("First", pageNumber, LinkType.First);
-        _lastLink = (pageNumber) => BuildItem("Last", pageNumber, LinkType.Last);
+        _nextLink = (pageNumber) => BuildItem(_nextText, pageNumber, LinkType.Next);
+        _previousLink = (pageNumber) => BuildItem(_previousText, pageNumber, LinkType.Previous);
+        _firstLink = (pageNumber) => BuildItem(_firstText, pageNumber, LinkType.First);
+        _lastLink = (pageNumber) => BuildItem(_lastText, pageNumber, LinkType.Last);
 
         _firstCssClass = "first";
         _previousCssClass = "previous";
